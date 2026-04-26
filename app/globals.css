@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f0ede8;
+  --color-ink: #0a0a0a;
+  --color-acid: #e8ff47;
+  --color-muted: rgba(10, 10, 10, 0.35);
+  --color-border: rgba(10, 10, 10, 0.08);
+  --color-surface: #e8e4de;
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-syne);
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-ink font-sans;
+    cursor: none;
+    overflow-x: hidden;
+  }
+  
+  a, button {
+    cursor: none;
+  }
+  
+  ::selection {
+    @apply bg-acid text-ink;
+  }
+
+  /* Apply global border rules */
+  .border-b-global {
+    border-bottom: 1px solid var(--color-border);
+  }
+  .border-t-global {
+    border-top: 1px solid var(--color-border);
+  }
+
+  @keyframes projectReveal {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .project-reveal {
+    animation: projectReveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-cream);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(10, 10, 10, 0.4);
+    border-radius: 0;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(10, 10, 10, 0.8);
+  }
+
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-ink) var(--color-cream);
+  }
+
+  /* Utility for hide scrollbar */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Nav link hover underline */
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+  .nav-underline:hover::after {
+    width: 100%;
+  }
+}
