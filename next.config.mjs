@@ -2,6 +2,7 @@
 const nextConfig = {
   output: 'export',
   basePath: '/vrtx-studio',
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },
